@@ -123,26 +123,63 @@ function iterate(pattern){
 var result = create()(2); // returns 120 (5 * 4 * 3 * 2 * 1)
 
 
-var i = iterate('0.1.1')(__object);
+var i = iterate('0.1.1.2')(__object);
 
 //console.log(i.children, 'as the result', i);
-
-function iterateRFunc(pattern, resolve){
-  _seed = pattern.split('.');
+////////////////////////////////////////////////////////////////////////////////
+function deeper(resolve){
   return function(k, v){
+    return resolve(k, v);
+  }
+}
+////////////////////////////////////////////////////////////////////////////////
+function iteration(map, resolve){
+  ///aqui necesito la function de i++resolve
 
-    if(k === _seed.length-1) return v[k].children;
-    console.log(resolve);
-    return resolve.call(this, _seed[k], v);
+  return function(k, v){
+    _.each(map, resolve);
+    for(i=0; i<map.length; i++){
+      console.log(i);
+    }
+    resolve(k, v);
+
   }
 }
 
-var t = iterateRFunc('0.1.1', function(k, v){
-  console.log(arguments);
-  var _v = v[k].children;
-  k++;
-  console.log(k, '|| called times');
-  return  _v;
-})(0, __object);
-console.log(i, '|| from iterate');
-console.log(t, ' || from iterateRFunc');
+var s = iteration(
+  pattern('0.1'), function(k, v){
+
+    console.log(k, v, 'on resove?');
+    return v;
+  }
+  /*pattern(
+      '0.1', deeper(function(k, v){
+        console.log(k, v)
+      }
+    )
+  )*/
+)(0, __object);
+console.log(s);
+
+function compare(){
+
+}
+function valid(){
+
+}
+
+function pattern(str){
+  return str.split('.');
+}
+
+
+
+/*var t = deeper(pattern('0.1.1'), function(k, v){
+  console.log(k, v);
+  return  v[k].children;
+})(0, __object);*/
+
+
+
+//console.log(i, '|| from iterate fran');
+//console.log(t, ' || from iterateRFunc');

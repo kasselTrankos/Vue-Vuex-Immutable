@@ -13,3 +13,8 @@ var result = iterator(pattern)(object);
 recorre un object localizando los children, debo darle una vuelta para:
 1. que el pattern, sea una function personal
 2. que el filtro de busqueda tambien
+
+```javascript
+function pattern(){}
+```
+ahora inyecto la function de patron
