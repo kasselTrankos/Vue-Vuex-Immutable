@@ -18,7 +18,9 @@ var List = function (){
     next: next,
     push: push,
     pull:pull,
-    stack:stack
+    stack:stack,
+    jumper:jumper,
+    sinon:sinon
   }
   __contructor(arguments);
 
@@ -65,7 +67,43 @@ var List = function (){
 
       return __object;
     }
+  }
+  /**
+    function que recorre internamente un array, ofreciendoles, los keys
+    integrando el arbol hacia el interior
+  */
+  function jumper(resolve){
+    return function(k, arr){
+      var _return =  resolve(k,arr[k].children) || false;
+      return _return;
+    }
+  }
+  function obten(){
 
+  }
+  /**
+  vamos por pasos.
+  Lo primero sinonm, solo me hace falta para crear un metodo nomad
+  */
+  function sinon(o, pattern, resolve){
+    __object = o;
+    __pattern = str;
+    __init = 0;
+    __seed = str.split('.');
+    console.log(__object, __pattern, '|| pattern', __init, '|| init');
+
+      return function(arr, k){
+        function iterator(arr){
+          return resolve(arr, __init);
+        }
+      __init++;
+      iterator(__object);
+    }
+
+
+    /*rerurn function(k, arr){
+      return resolve(k, arr);
+    }*/
   }
 
 }
