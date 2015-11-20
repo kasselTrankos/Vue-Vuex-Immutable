@@ -111,7 +111,7 @@ function iterate(pattern){
   _k = 0;
   _seed = pattern.split('.');
   return function(arr){
-    if(_k==_seed.length-1) {
+    if(_k===_seed.length-1) {
       return arr[_seed[_k]];
     }
     _arr = arr[_seed[_k++]].children;
@@ -119,9 +119,30 @@ function iterate(pattern){
   }
 }
 
-var result = create()(2); // returns 120 (5 * 4 * 3 * 2 * 1)
-console.log(result);
 
-var i = iterate('0.1.1.2.0')(__object);
+var result = create()(2); // returns 120 (5 * 4 * 3 * 2 * 1)
+
+
+var i = iterate('0.1.1')(__object);
 
 //console.log(i.children, 'as the result', i);
+
+function iterateRFunc(pattern, resolve){
+  _seed = pattern.split('.');
+  return function(k, v){
+
+    if(k === _seed.length-1) return v[k].children;
+    console.log(resolve);
+    return resolve.call(this, _seed[k], v);
+  }
+}
+
+var t = iterateRFunc('0.1.1', function(k, v){
+  console.log(arguments);
+  var _v = v[k].children;
+  k++;
+  console.log(k, '|| called times');
+  return  _v;
+})(0, __object);
+console.log(i, '|| from iterate');
+console.log(t, ' || from iterateRFunc');
