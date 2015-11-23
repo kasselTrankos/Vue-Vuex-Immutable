@@ -22,7 +22,7 @@ var List = function (){
     jumper:jumper,
     sinon:sinon
   }
-  __contructor(arguments);
+  //__contructor(arguments);
 
   function __contructor(){
     console.log(arguments, 'load');

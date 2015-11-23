@@ -66,10 +66,10 @@ var unStackBinder = list.stack(function(stack, v){
   return this;
 }}).f.call('!');
 
-console.log( list.get(), 'alo');
-var str = '0.1';
-var keys = str.split('.');
-var init = 0;
+//console.log( list.get(), 'alo');
+//var str = '0.1';
+//var keys = str.split('.');
+//var init = 0;
 /*var finder = list.jumper(function(k, arr){
   console.log(k, '|| key || ', arr, '|| array || ', 'on method');
 
@@ -84,20 +84,20 @@ console.log(finder(keys[init], _demosObject));*/
 
 //stack('add');
 
-var sinon = list.sinon(_demosObject, str, function(arr, k){
-  console.log(arr, ' || arr ', k, '|| key');
+//var sinon = list.sinon(_demosObject, str, function(arr, k){
+  ///console.log(arr, ' || arr ', k, '|| key');
 
-});
-sinon();
+//});
+//sinon();
 
 function factorial (n) {
     //console.log(n);
     return !(n > 1) ? 1 : factorial(n - 1) * n;
 }
-var rr = [1,2,3,0,4,5];
+/*var rr = [1,2,3,0,4,5];
 rr.map(factorial);
 console.log(rr);
-
+*/
 function create() {
    return function(n) {
 
@@ -120,10 +120,10 @@ function iterate(pattern){
 }
 
 
-var result = create()(2); // returns 120 (5 * 4 * 3 * 2 * 1)
+//var result = create()(2); // returns 120 (5 * 4 * 3 * 2 * 1)
 
 
-var i = iterate('0.1.1.2')(__object);
+//var i = iterate('0.1.1.2')(__object);
 
 //console.log(i.children, 'as the result', i);
 ////////////////////////////////////////////////////////////////////////////////
@@ -133,53 +133,43 @@ function deeper(resolve){
   }
 }
 ////////////////////////////////////////////////////////////////////////////////
-function iteration(map, resolve){
-  ///aqui necesito la function de i++resolve
+function iteration(map, compare){
+  ///aqui necesito la function de i++ compare
+  var i=0, l=map.length;
+  return function(stack){
+    for (i; i<l;i++)
+      stack = compare(stack[map[i]]);
 
-  return function(k, v){
-    _.each(map, resolve);
-    for(i=0; i<map.length; i++){
-      console.log(i);
-    }
-    resolve(k, v);
-
+    return stack;
   }
 }
+var _objeto=[
+  {
+    title:'item--0',
+    id:0,
+    children:[
+      {
+        title:'coyote',
+        id:1,
+        children:[
+          {
+            title:'correcaminos',
+            id:2
+          }
+        ]
+      }
+    ]
+  }
+];
 
 var s = iteration(
-  pattern('0.1'), function(k, v){
-
-    console.log(k, v, 'on resove?');
-    return v;
+  pattern('0.1.1.2'), function(stack){
+    return stack.children || stack;
   }
-  /*pattern(
-      '0.1', deeper(function(k, v){
-        console.log(k, v)
-      }
-    )
-  )*/
-)(0, __object);
-console.log(s);
+)(_demosObject);
 
-function compare(){
-
-}
-function valid(){
-
-}
 
 function pattern(str){
   return str.split('.');
 }
-
-
-
-/*var t = deeper(pattern('0.1.1'), function(k, v){
-  console.log(k, v);
-  return  v[k].children;
-})(0, __object);*/
-
-
-
-//console.log(i, '|| from iterate fran');
-//console.log(t, ' || from iterateRFunc');
+console.log(s);
