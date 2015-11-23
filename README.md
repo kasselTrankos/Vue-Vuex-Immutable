@@ -17,4 +17,9 @@ recorre un object localizando los children, debo darle una vuelta para:
 ```javascript
 function pattern(){}
 ```
-ahora inyecto la function de patron
+ahora inyecto la function de patron, la cual crea un array de mapa.
+
+```javascript
+function compare()
+```
+Me estaba complicando en exceso a la hora de reiniciar el object. En el bucle que recorre el patron se resetea con el compare. Este metodo es semi anonimo, en el return.
