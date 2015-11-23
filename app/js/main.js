@@ -143,33 +143,18 @@ function iteration(map, compare){
     return stack;
   }
 }
-var _objeto=[
-  {
-    title:'item--0',
-    id:0,
-    children:[
-      {
-        title:'coyote',
-        id:1,
-        children:[
-          {
-            title:'correcaminos',
-            id:2
-          }
-        ]
-      }
-    ]
-  }
-];
+
 
 var s = iteration(
-  pattern('0.1.1.2'), function(stack){
+  pattern('0'), function(stack){
+    if(typeof(stack)=='undefined') return false;
     return stack.children || stack;
   }
 )(_demosObject);
 
 
 function pattern(str){
+  if(!/\./.test(str)) return [+str];
   return str.split('.');
 }
-console.log(s);
+console.log(s, 'at the result');
