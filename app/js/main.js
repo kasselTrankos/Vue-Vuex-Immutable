@@ -134,61 +134,21 @@
     return str.split('.');
   }
 
-  function iterate(filter, resolve){
-    return function(stack, filter){
-      console.log(stack);
-      for(k in stack){
-        console.log(stack[k], ' uiioioi', k);
-        if(stack[k].children){
-          stack = resolve.apply(null, stack[k].children);
-        }
-      }
-    }
-  }
-  var ite = iterate({id: 3}, function(stack, filter){
-    console.log(stack, filter, ' quzas aqui hago el teste de filter');
-    return stack;
-  })(_demosObject);
   console.log(s, 'at the result');
   console.log(t, 'on the other hand');
-  console.log(ite, ' at end of top');
   /////Trampolin
-
+///no es complicado recibe la function encapsulada en contexto
+//f, comprueba su tipo( funcdamental en cualquier programacion)
+/// y si esta bien ejecuta, siempre que sea true
+///el avance que propone la web de readme es un array, que hace de pila
   function trampoline(f) {
-    console.log(f, '00000000000000000000');
       while (f && f instanceof Function) {
-          f = f();////es aqui cuando lo llama , mmmm
+          f = f();////es aqui cuando lo llama f()
       }
       return f;
   }
 
-  function sum(x, y) {
-
-      function recur(x, y) {
-          if (y > 0) {
-            return recur.bind(null, x + 1, y - 1);
-          } else {
-            return x;
-          }
-      }
-      return trampoline(recur.bind(null, x, y));
-  }
-
-  var sma = sum(1, 10900); // => 11
-  console.log(sma, 'at the end');
-  /////necesito entender bind
-  function testBind(a){
-    var custom ='this';
-    console.log('called a', this, a);
-    return function(b){
-      console.log(b, ' opop');
-    }
-  }
-  testBind();
-  ////bind captura el metodo pero no lo lama,
-  /////encapsula el metodo
-  testBind.bind(null, 'ate')()('pop soy b')
-  //////y ahora lo voy a aplicar
+//////y ahora lo voy a aplicar
 //////impreeeeesionante tecnica.
 /////parece mas light, y sencilla bastante
   function deepSearch(stack, compare, next){
@@ -208,6 +168,6 @@
   }
 
   var ss = deepSearch(_demosObject, function(o){
-    return (o.title==='candy' || o.title==='glass' || o.title==='miller');
+    return (o.id===8);
   }, function(o){return (o.children);});
-  console.log(ss, ' jjajajja');
+  console.log(ss, ' jjajajja deep search nested!!!!');
