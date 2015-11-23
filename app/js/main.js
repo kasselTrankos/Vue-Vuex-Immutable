@@ -47,8 +47,8 @@ var _demosObject= [{
   ]
 }];
 
-//stack(content, 'dueto')
-
+/////////////////from book,
+/////dynamic scope
 var stackBinder = list.stack(function(stack, v){
   stack.push(v);
   return stack;
@@ -94,44 +94,7 @@ function factorial (n) {
     //console.log(n);
     return !(n > 1) ? 1 : factorial(n - 1) * n;
 }
-/*var rr = [1,2,3,0,4,5];
-rr.map(factorial);
-console.log(rr);
-*/
-function create() {
-   return function(n) {
 
-      if (n <= 1)
-         return 1;
-      return n * arguments.callee(n - 1);
-   };
-}
-
-function iterate(pattern){
-  _k = 0;
-  _seed = pattern.split('.');
-  return function(arr){
-    if(_k===_seed.length-1) {
-      return arr[_seed[_k]];
-    }
-    _arr = arr[_seed[_k++]].children;
-    return arguments.callee(_arr);
-  }
-}
-
-
-//var result = create()(2); // returns 120 (5 * 4 * 3 * 2 * 1)
-
-
-//var i = iterate('0.1.1.2')(__object);
-
-//console.log(i.children, 'as the result', i);
-////////////////////////////////////////////////////////////////////////////////
-function deeper(resolve){
-  return function(k, v){
-    return resolve(k, v);
-  }
-}
 ////////////////////////////////////////////////////////////////////////////////
 function iteration(map, compare){
   ///aqui necesito la function de i++ compare
@@ -146,15 +109,25 @@ function iteration(map, compare){
 
 
 var s = iteration(
-  pattern('0'), function(stack){
+  pattern('0.1.1.2'), function(stack){
     if(typeof(stack)=='undefined') return false;
     return stack.children || stack;
   }
 )(_demosObject);
+var t = iteration(
+  pattern('0.1'), function(stack){
+    return compare(stack);
+  }
+)(_demosObject);
 
+function compare(stack){
+  if(typeof(stack)=='undefined') return false;
+  return stack.children || stack;
+}
 
 function pattern(str){
   if(!/\./.test(str)) return [+str];
   return str.split('.');
 }
 console.log(s, 'at the result');
+console.log(t, 'on the other hand');
