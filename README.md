@@ -23,3 +23,6 @@ ahora inyecto la function de patron, la cual crea un array de mapa.
 function compare()
 ```
 Me estaba complicando en exceso a la hora de reiniciar el object. En el bucle que recorre el patron se resetea con el compare. Este metodo es semi anonimo, en el return.
+
+
+bien ahora estoy estudiando el punto de recursividad.

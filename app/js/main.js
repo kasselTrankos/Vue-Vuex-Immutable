@@ -129,5 +129,57 @@ function pattern(str){
   if(!/\./.test(str)) return [+str];
   return str.split('.');
 }
+
+function iterate(filter, resolve){
+  return function(stack, filter){
+    console.log(stack);
+    for(k in stack){
+      console.log(stack[k], ' uiioioi', k);
+      if(stack[k].children){
+        stack = resolve.apply(null, stack[k].children);
+      }
+    }
+  }
+}
+var ite = iterate({id: 3}, function(stack, filter){
+  console.log(stack, filter, ' quzas aqui hago el teste de filter');
+  return stack;
+})(_demosObject);
 console.log(s, 'at the result');
 console.log(t, 'on the other hand');
+console.log(ite, ' at end of top');
+/////Trampolin
+
+function trampoline(f) {
+    while (f && f instanceof Function) {
+        f = f();
+    }
+    return f;
+}
+
+function sum(x, y) {
+
+    function recur(x, y) {
+        if (y > 0) {
+          return recur.bind(null, x + 1, y - 1);
+        } else {
+          return x;
+        }
+    }
+    return trampoline(recur.bind(null, x, y));
+}
+
+var sma = sum(1, 10900); // => 11
+console.log(sma, 'at the end');
+/////necesito entender bind
+function testBind(a){
+  var custom ='this';
+  console.log('called a', this, a);
+  return function(b){
+    console.log(b, ' opop');
+  }
+}
+testBind();
+////bind captura el metodo pero no lo lama, 
+/////
+testBind.bind(null, 'ate')()('pop soy b')
