@@ -26,7 +26,7 @@ Me estaba complicando en exceso a la hora de reiniciar el object. En el bucle qu
 
 
 bien ahora estoy estudiando el punto de recursividad.
-Encuentro el metodo Trampolin, el cual de una forma muy simple, evitando TCO ["tail call optimisation"](http://www.integralist.co.uk/posts/js-recursion.html)
+Encuentro las funciones trampoline, las cuales de una forma muy simple, evitando TCO ["tail call optimisation"](http://www.integralist.co.uk/posts/js-recursion.html)
 consigo hacer busqueda en deep ( nested tree, vamos el que quiera, greaaat.)
 ```javascript
 function deepSearch(stack, compare, next);

@@ -70,29 +70,6 @@
     return this;
   }}).f.call('!');
 
-  //console.log( list.get(), 'alo');
-  //var str = '0.1';
-  //var keys = str.split('.');
-  //var init = 0;
-  /*var finder = list.jumper(function(k, arr){
-    console.log(k, '|| key || ', arr, '|| array || ', 'on method');
-
-    if(arr!==false) {
-  console.log('recall it!! please', keys[++init]);
-      return list.jumper(keys[++init], arr);
-    }else{
-      return arr;
-    }
-  });
-  console.log(finder(keys[init], _demosObject));*/
-
-  //stack('add');
-
-  //var sinon = list.sinon(_demosObject, str, function(arr, k){
-    ///console.log(arr, ' || arr ', k, '|| key');
-
-  //});
-  //sinon();
 
   function factorial (n) {
       //console.log(n);
@@ -136,16 +113,18 @@
 
   console.log(s, 'at the result');
   console.log(t, 'on the other hand');
-  /////Trampolin
+/////Trampolin
 ///no es complicado recibe la function encapsulada en contexto
-//f, comprueba su tipo( funcdamental en cualquier programacion)
+//f, comprueba su tipo(fundamental en cualquier programacion)
 /// y si esta bien ejecuta, siempre que sea true
-///el avance que propone la web de readme es un array, que hace de pila
+///el avance que propone la web de readme es un array,
+///que hace de pila
+/////////////////////////////////////////////////////////
   function trampoline(f) {
-      while (f && f instanceof Function) {
-          f = f();////es aqui cuando lo llama f()
-      }
-      return f;
+    while (f && f instanceof Function) {
+      f = f();////es aqui cuando lo llama f()
+    }
+    return f;
   }
 
 //////y ahora lo voy a aplicar
@@ -157,16 +136,17 @@
       for(k in stack){
         if(compare(stack[k]))
           founded.push(stack[k]);
-
         if(next(stack[k]))
           return find.bind(null, stack[k].children);
       }
       /////recupero los encontrados
       return founded;
     }
+    ///pero solo se añade a trampoline 1 vez!!1,
+    ///sin embargo esta por cada bind precvio
     return trampoline(find.bind(null, stack));
   }
-
+  //aplico la solucion de busqueda.
   var ss = deepSearch(_demosObject, function(o){
     return (o.id===8);
   }, function(o){return (o.children);});
