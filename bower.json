@@ -1,0 +1,15 @@
+{
+  "name": "functional-test",
+  "description": "studio",
+  "main": "index.js",
+  "license": "ISC",
+  "homepage": "https://github.com/kasselTrankos/functional-react-flux",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

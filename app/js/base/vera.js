@@ -26,14 +26,13 @@ var listener = (function(){
 
 
 /////////////////////////////////////////////////////
-
+////
+/// modelo que se autocarga, y se le inyecta listener.
+//////////////////////////////////////////////////////
 var route = (function(listener){
   var paths = [];
   var event, el;
-  ////if(listener) listener.add('ON_PATH', update, ['pepe', 'paco']);
   __init();
-
-
 
   var app ={
     init: function(){
@@ -48,9 +47,9 @@ var route = (function(listener){
     var args = Array.prototype.slice.call(arguments);
     var _path = args.slice(-1)[0];
     console.log(args.length, args);
-
     event = __getMouseEvent(args);
     el = __getThis(args);
+    if(event) event.preventDefault();
 
     return (__set(_path)) ? app : false;
   }
@@ -91,8 +90,7 @@ var route = (function(listener){
       window.attachEvent('hashchange', __onChange);
     return true;
   }
-  function set(path){
-  }
+  
   function __onChange(){
     if(listener)
       listener.dispatch('HASH_CHAGE', [event, el, window.location.hash]);

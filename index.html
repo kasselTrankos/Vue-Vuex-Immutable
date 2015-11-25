@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 
-
+    <link href="app/bower/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="app/js/underscore/underscore.js"></script>
     <script src="app/js/base/base.js"></script>
 
@@ -16,7 +16,7 @@
           [text para test de change route]
         </p>
         <br />
-        <a href="#link1">link 1</a>
+        <a href="#link1" onclick="route(event, this, '#lolo')">link 1</a>
         <br />
         <a href="#link-2">link 2</a>
         <p onclick="route(event, this, '#tres')">sin link</p>
