@@ -19,7 +19,8 @@
         <a href="#link1">link 1</a>
         <br />
         <a href="#link-2">link 2</a>
-        <p onclick="route('#tres')">sin link</p>
+        <p onclick="route(event, this, '#tres')">sin link</p>
+        <p onclick="route(event, this, '#cuatro')">cuatro</p>
       </div>
       <script src="app/js/base/vera.js"></script>
       <script src="app/js/main.js"></script>
