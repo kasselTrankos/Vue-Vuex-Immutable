@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "http-server -a localhost -p 8000 -c-1"
+    "server": "http-server -a localhost -p 8000 -c-1",
+    "buildjs":"./node_modules/watchify/bin/cmd.js  app/js/app.js -o www/js/build.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "browserify": "^12.0.1",
+    "gulp": "^3.9.0",
     "http-server": "^0.8.5"
   }
 }
