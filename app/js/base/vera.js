@@ -28,11 +28,11 @@ var listener = (function(){
 /////////////////////////////////////////////////////
 
 var route = (function(listener){
-  var doc = document.location.href;
   var paths = [];
-  if(listener) listener.add('ON_PATH', update, ['pepe', 'paco']);
-
-
+  var ___i = 0;
+  ////if(listener) listener.add('ON_PATH', update, ['pepe', 'paco']);
+  __init();
+  console.log('inicio la app');
 
 
   var app ={
@@ -49,7 +49,7 @@ var route = (function(listener){
   }
 
   function __apply(path){
-    if(doc.lastIndexOf(path)>-1) return false;
+
   }
 
   function __applied(path){
@@ -58,7 +58,7 @@ var route = (function(listener){
   function __set(path)
   {
     if(!__applied(path)){
-      listener.dispatch('ON_PATH');
+
       window.location.hash = __cleanPath(path);
       return true;
     }
@@ -68,14 +68,25 @@ var route = (function(listener){
   function __cleanPath(path){
     return (/^\#/.test(path)) ? path.split('#')[1] : path;
   }
+  function __init()
+  {
+    console.log('CALLED: TIMES!!!!');
+    if (window.addEventListener)
+      window.addEventListener('hashchange', __onChange, false);
+    else if (window.attachEvent)
+      window.attachEvent('hashchange', __onChange);
+
+  }
 
 
   function set(path){
 
   }
 
-  function update(arg0, arg1){
-    console.log('update from base', arguments, arg0);
+  function __onChange(){
+    ___i++;
+    console.log(___i, ' CALLED =====');
+    console.log('update from base', arguments);
   }
 })(listener);
 var r = route('#home');

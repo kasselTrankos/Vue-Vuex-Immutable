@@ -11,11 +11,15 @@
   <body>
       <h1>Functional javascript</h1>
       <div id="test">
-        Me gustaría que toda la aplicación se sostenga en este espacio
+        <p>Me gustaría que toda la aplicación se sostenga en este espacio</p>
+        <p id="test-route">
+          [text para test de change route]
+        </p>
         <br />
-        <a href="#link1" onclick="route('#link1');">link 1</a>
+        <a href="#link1">link 1</a>
         <br />
-        <a href="#link-2" onclick="route('#link2');">link 2</a>
+        <a href="#link-2">link 2</a>
+        <p onclick="route('#tres')">sin link</p>
       </div>
       <script src="app/js/base/vera.js"></script>
       <script src="app/js/main.js"></script>
