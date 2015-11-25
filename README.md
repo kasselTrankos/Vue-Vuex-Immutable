@@ -31,3 +31,5 @@ consigo hacer busqueda en deep ( nested tree, vamos el que quiera, greaaat.)
 ```javascript
 function deepSearch(stack, compare, next);
 ```
+
+Como ejercicio, estoy creando un simple modelo routing, con listener.
