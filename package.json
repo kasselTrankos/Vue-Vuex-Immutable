@@ -1,7 +1,7 @@
 {
   "name": "functional-test",
   "version": "1.0.0",
-  "description": "",
+  "description": "Case Study of programming functional with react and flux( will change :))",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,5 +11,14 @@
   "license": "ISC",
   "devDependencies": {
     "http-server": "^0.8.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kasselTrankos/functional----case-study.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/kasselTrankos/functional----case-study/issues"
+  },
+  "homepage": "https://github.com/kasselTrankos/functional----case-study#readme"
 }
