@@ -154,6 +154,18 @@ var app = new Vue({
     el: '#app',
     data: {
       message: 'Hello Vue!'+ss
+    },
+    created: function () {
+      this.fetchData();
+    },
+    methods: {
+      fetchData: function () {
+        var self = this;
+        $.get( '/demo/complex.json', function( data ) {
+            self.items = data;
+        });
+
+      }
     }
 })
   console.log(ss, ' jjajajja deep search nested!!!!');
