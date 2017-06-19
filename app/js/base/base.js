@@ -83,7 +83,7 @@ var List = function (){
   }
   /**
   vamos por pasos.
-  Lo primero sinonm, solo me hace falta para crear un metodo nomad
+  Lo primero sinon, solo me hace falta para crear un metodo nomad
   */
   function sinon(o, pattern, resolve){
     __object = o;

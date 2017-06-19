@@ -116,8 +116,8 @@
 /////Trampolin
 ///no es complicado recibe la function encapsulada en contexto
 //f, comprueba su tipo(fundamental en cualquier programacion)
-/// y si esta bien ejecuta, siempre que sea true
-///el avance que propone la web de readme es un array,
+/// y si es function entonces ejecuta, en otro caso retorna el valor informado
+/// el avance que propone la web de readme es un array,
 ///que hace de pila
 /////////////////////////////////////////////////////////
   function trampoline(f) {
@@ -143,11 +143,17 @@
       return founded;
     }
     ///pero solo se añade a trampoline 1 vez!!1,
-    ///sin embargo esta por cada bind precvio
+    ///sin embargo esta por cada bind previo
     return trampoline(find.bind(null, stack));
   }
   //aplico la solucion de busqueda.
   var ss = deepSearch(_demosObject, function(o){
     return (o.id===8);
   }, function(o){return (o.children);});
+var app = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue!'+ss
+    }
+})
   console.log(ss, ' jjajajja deep search nested!!!!');

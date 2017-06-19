@@ -4,7 +4,14 @@ Case Study of programming functional with react and flux( will change :))
 
 Me siento con ganas y estoy creando el objeto <List>, como ejercicio de programacion funcional.
 
+
+
+Añadiendo Vue js como motor de render.
+
+
 Pendiente de implementar.
+
+
 
 `npm run serve`
 
