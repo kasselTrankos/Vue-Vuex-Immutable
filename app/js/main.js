@@ -66,7 +66,7 @@
     return stack;
   });
   ({f: function(){
-    console.log(this);
+    //console.log(this);
     return this;
   }}).f.call('!');
 
@@ -89,7 +89,7 @@
   }
 
 
-  var s = iteration(
+ /* var s = iteration(
     pattern('0.1.1.2'), function(stack){
       if(typeof(stack)=='undefined') return false;
       return stack.children || stack;
@@ -101,18 +101,26 @@
     }
   )(_demosObject);
 
-  function compare(stack){
-    if(typeof(stack)=='undefined') return false;
-    return stack.children || stack;
-  }
-
+  
+*/
+function compare(stack){
+  console.log(stack, 444, 00)
+  if(typeof(stack)=='undefined') return false;
+  
+  return stack.children || stack;
+}
   function pattern(str){
     if(!/\./.test(str)) return [+str];
     return str.split('.');
   }
+function compared(stack){
+  console.log(stack, 333);
+  if(typeof(stack)=='undefined') return false;
+  return stack.children || stack;
+};
 
-  console.log(s, 'at the result');
-  console.log(t, 'on the other hand');
+  //console.log(s, 'at the result');
+  //console.log(t, 'on the other hand');
 /////Trampolin
 ///no es complicado recibe la function encapsulada en contexto
 //f, comprueba su tipo(fundamental en cualquier programacion)
@@ -130,14 +138,17 @@
 //////y ahora lo voy a aplicar
 //////impreeeeesionante tecnica.
 /////parece mas light, y sencilla bastante
-  function deepSearch(stack, compare, next){
-    var founded =[];
+///// modelo abstracto de objeto
+  function deepAbstractSearch(stack, compare, next){
+    var founded =[]; 
     function find(stack){
       for(k in stack){
-        if(compare(stack[k]))
+        if(compare(stack[k])){
           founded.push(stack[k]);
-        if(next(stack[k]))
-          return find.bind(null, stack[k].children);
+        }
+        if(next(stack[k])){    
+          trampoline(find.bind(null, stack[k]));
+        }
       }
       /////recupero los encontrados
       return founded;
@@ -146,13 +157,15 @@
     ///sin embargo esta por cada bind previo
     return trampoline(find.bind(null, stack));
   }
-  //aplico la solucion de busqueda.
-  var ss = deepSearch(_demosObject, function(o){
-    return (o.id===8);
-  }, function(o){return (o.children);});
+//aplico la solucion de busqueda.
+/*var ss = deepSearch(_demosObject, function(o){
+  return (o.id===8);
+}, function(o){return (o.children);});*/
+var ss = 'nit'
 var app = new Vue({
     el: '#app',
     data: {
+      search:'',
       message: 'Hello Vue!'+ss
     },
     created: function () {
@@ -163,9 +176,17 @@ var app = new Vue({
         var self = this;
         $.get( '/demo/complex.json', function( data ) {
             self.items = data;
+
+            var t = deepAbstractSearch(data, function(o){
+              return (o.type=='Garbanzos');
+            }, 
+            function(o){
+              return (Object.prototype.toString.call( o ) === '[object Array]' || Object.prototype.toString.call( o ) === '[object Object]');
+            });
+            console.log(t, 'poppp');
         });
 
       }
     }
 })
-  console.log(ss, ' jjajajja deep search nested!!!!');
+//  console.log(ss, ' jjajajja deep search nested!!!!');
