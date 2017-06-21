@@ -161,7 +161,7 @@ function compared(stack){
 /*var ss = deepSearch(_demosObject, function(o){
   return (o.id===8);
 }, function(o){return (o.children);});*/
-var ss = 'nit'
+var ss = 'nit';
 var app = new Vue({
     el: '#app',
     data: {
@@ -170,23 +170,23 @@ var app = new Vue({
     },
     created: function () {
       this.fetchData();
+      
     },
     methods: {
       fetchData: function () {
         var self = this;
         $.get( '/demo/complex.json', function( data ) {
             self.items = data;
-
             var t = deepAbstractSearch(data, function(o){
-              return (o.type=='Garbanzos');
+              return (o.id=='1044401');
             }, 
             function(o){
-              return (Object.prototype.toString.call( o ) === '[object Array]' || Object.prototype.toString.call( o ) === '[object Object]');
+              return (Object.prototype.toString.call(o) === '[object Array]' || Object.prototype.toString.call(o) === '[object Object]');
             });
             console.log(t, 'poppp');
         });
 
       }
     }
-})
+});
 //  console.log(ss, ' jjajajja deep search nested!!!!');

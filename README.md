@@ -6,7 +6,7 @@ Me siento con ganas y estoy creando el objeto <List>, como ejercicio de programa
 
 
 
-Añadiendo Vue js como motor de render.
+Añadiendo Vue js como motor de render, server nativo con http-statics de node js.
 
 
 Pendiente de implementar.
