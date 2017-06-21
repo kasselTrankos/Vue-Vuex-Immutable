@@ -52,16 +52,20 @@ function complete(methods){
 var $scope = {
   value: 6,
   error:false,
-  one: function(){
-    console.log(1111);
-    this.value++;
+  one: function(value){
+    this.value+= value;
+    console.log(5555);
     return this;
   },
-  two: function(){
+  two: function(newVal){
     if(this.value>6){
       console.log(77777);
     }
-    console.log(2222);
+    this.value+=newVal;
+    return this;
+  },
+  toString: function(){
+    this.str = '{value: '+this.value+'}'
     return this;
   }
 };
@@ -74,6 +78,63 @@ var close = function(){
   //return false;
 }
 //$scope.one().two();
-var doubles = [open , $scope.one, close].map(function(x) {
+/*var doubles = [open , $scope.one, close].map(function(x, i) {
    return x.call();
-});
+});*/
+var greet    = function(name){ return "hi: " + name; };
+var exclaim  = function(statement){ return statement.toUpperCase() + "!"; };
+var welcome = _.compose(open, close);
+
+//console.log(welcome('moe'), 99999);
+/// 'hi: MOE!'
+function LazyChain(obj) {
+  this._calls = [];
+  this._target = obj;
+}
+/*function go() {
+  var d = $.Deferred();
+  $.when("")
+  .then(function() {
+  setTimeout(function() {
+  console.log("sub-task 1");
+  }, 1000)
+  })
+  .then(function() {
+  setTimeout(function() {
+  console.log("sub-task 2");
+  }, 1200)
+  })
+  .then(function() {
+    
+  setTimeout(function() {
+    d.resolve("done done done done");
+  }, 2200)
+  })
+  return d.promise();
+}*/
+
+
+LazyChain.prototype.invoke = function(methodName /*, args */) {
+  var args = [].slice.call(arguments, 1);// quitando underscore
+  this._calls.push(function(target) {
+    var meth = target[methodName];
+    return meth.apply(target, args);
+  });
+  return this;
+};
+LazyChain.prototype.force = function() {
+    ///quitado underscore
+    return this._calls.reduce(function(target, thunk, indice, vector){
+      return thunk(target);
+    }, this._target);
+};
+var t = new LazyChain($scope)
+.invoke('one', 90)
+.invoke('two', $scope.value)
+.invoke('toString')
+.force();
+console.log(t.str, 'is 9999999999999999');
+/*console.log(t, 77777);
+var yearning = go().done(function(e){
+  console.log(e);
+});*/
