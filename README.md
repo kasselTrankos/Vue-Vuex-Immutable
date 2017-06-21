@@ -23,8 +23,9 @@ var t = new LazyChain($scope)
 .invoke('two', $scope.value)
 .invoke('toString')
 .force();
+```
 
-- Lazy load chaining, combine n functions, ideal para angular. Ya que actualiz el $scope, en cada invocación y then force.
+Lazy load chaining, combine n functions, ideal para angular. Ya que actualiz el $scope, en cada invocación y then force.
 
 ```javascript
 var result = iterator(pattern)(object);
