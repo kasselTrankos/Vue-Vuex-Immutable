@@ -13,9 +13,18 @@ Pendiente de implementar.
 
 
 
-`npm run serve`
+`node static_server.js`
 
-desde http://127.0.0.1:8000
+desde http://127.0.0.1:9000
+
+```javascript
+var t = new LazyChain($scope)
+.invoke('one', 90)
+.invoke('two', $scope.value)
+.invoke('toString')
+.force();
+
+- Lazy load chaining, combine n functions, ideal para angular. Ya que actualiz el $scope, en cada invocación y then force.
 
 ```javascript
 var result = iterator(pattern)(object);
