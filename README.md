@@ -28,9 +28,11 @@ var t = new LazyChain($scope)
 
 Validación de Object by string en validQueryObject, retorna false si no existe, en caso de existir la posición pedida: 
 ```javascript
-  var _validQueryObject = validQueryObject('_demosObject[0].children[0].ids')(_demosObject);
-  console.log(_validQueryObject, 9999);
+  var isValid = validQueryObject('_demosObject[0].children[0].ids')(_demosObject);
+  console.log(isValid, 9999);
+  return position of object or final value of object if is founded or false if is not exists.
 ```
+
 
 Lazy load chaining, combine n functions, ideal para angular. Ya que actualiz el $scope, en cada invocación y then force.
 

@@ -52,8 +52,8 @@
     ]
   }];
 
-  var _validQueryObject = validQueryObject('_demosObject[0].children[0].ids[1111]')(_demosObject);
-  console.log(_validQueryObject, '_demosObject[0].children[0].ids');
+  var isValid = validQueryObject('_demosObject[0].children[0].ids[1111]')(_demosObject);
+  console.log(isValid, '_demosObject[0].children[0].ids');
   /////////////////from book,
   /////dynamic scope
   var stackBinder = list.stack(function(stack, v){
