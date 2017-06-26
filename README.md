@@ -25,6 +25,7 @@ var t = new LazyChain($scope)
 .force();
 ```
 
+Lazy load chaining, combine n functions, ideal para angular. Ya que actualiz el $scope, en cada invocación y then force.
 
 Validación de Object by string en validQueryObject, retorna false si no existe, en caso de existir la posición pedida: 
 ```javascript
@@ -32,9 +33,6 @@ Validación de Object by string en validQueryObject, retorna false si no existe,
   console.log(isValid, 9999);
   return position of object or final value of object if is founded or false if is not exists.
 ```
-
-
-Lazy load chaining, combine n functions, ideal para angular. Ya que actualiz el $scope, en cada invocación y then force.
 
 ```javascript
 var result = iterator(pattern)(object);
