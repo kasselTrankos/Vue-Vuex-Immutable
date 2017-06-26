@@ -31,6 +31,7 @@ emitter.next('baz');
 emitter.complete();
 
 }*/
+///Chaining and Lazy Caining
 var Capsule = (function Capsule(){
   var method;
   return {
@@ -52,6 +53,10 @@ function complete(methods){
 var $scope = {
   value: 6,
   error:false,
+  reset: function(){
+    this.value-=1987;
+    return this;
+  },
   one: function(value){
     this.value+= value;
     console.log(5555);
@@ -77,20 +82,15 @@ var close = function(){
   console.log('close');
   //return false;
 }
-//$scope.one().two();
-/*var doubles = [open , $scope.one, close].map(function(x, i) {
-   return x.call();
-});*/
+
+
 var greet    = function(name){ return "hi: " + name; };
 var exclaim  = function(statement){ return statement.toUpperCase() + "!"; };
 var welcome = _.compose(open, close);
 
 //console.log(welcome('moe'), 99999);
 /// 'hi: MOE!'
-function LazyChain(obj) {
-  this._calls = [];
-  this._target = obj;
-}
+
 /*function go() {
   var d = $.Deferred();
   $.when("")
@@ -112,7 +112,10 @@ function LazyChain(obj) {
   })
   return d.promise();
 }*/
-
+function LazyChain(obj) {
+  this._calls = [];
+  this._target = obj;
+}
 
 LazyChain.prototype.invoke = function(methodName /*, args */) {
   var args = [].slice.call(arguments, 1);// quitando underscore
@@ -128,12 +131,14 @@ LazyChain.prototype.force = function() {
       return thunk(target);
     }, this._target);
 };
+$scope.one(122).two(900);
 var t = new LazyChain($scope)
 .invoke('one', 90)
 .invoke('two', $scope.value)
 .invoke('toString')
+.invoke('reset')
 .force();
-console.log(t.str, 'is 9999999999999999');
+console.log(t.value, 'is 9999999999999999');
 /*console.log(t, 77777);
 var yearning = go().done(function(e){
   console.log(e);

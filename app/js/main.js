@@ -189,4 +189,17 @@ var app = new Vue({
       }
     }
 });
+
 //  console.log(ss, ' jjajajja deep search nested!!!!');
+$.get( '/demo/esprima.json', function( data ) {
+  console.log(data);
+  self.items = data;
+  var t = deepAbstractSearch(data, function(o){
+    console.log();
+    return (o && o.callee && o.callee.object && o.callee.object.name=='console' && o.arguments && o.arguments.length==2 && o.arguments[1].value=='is 9999999999999999');
+  }, 
+  function(o){
+    return (Object.prototype.toString.call(o) === '[object Array]' || Object.prototype.toString.call(o) === '[object Object]');
+  });
+  console.log(t, 'poppp');
+});
