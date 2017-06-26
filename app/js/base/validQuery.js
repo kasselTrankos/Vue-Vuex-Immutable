@@ -5,14 +5,12 @@ var validQueryObject = function	(pattern){
 		for(var i=0;i<=pattern.length; i++){
 			Object(i); Array(i)
 		}
-		console.log(_lexers, ' lerx');
 	}
 	function valid(i){
 		Lexer();
 		var _o  = _object;
 		for(var i=0;i<_lexers.length; i++){
 			_o = _o[pattern.slice(_lexers[i].start, _lexers[i].end)];
-			console.log(_object, i);
 			if(!_o) break;
 		}
 		return _o;
@@ -42,7 +40,6 @@ var validQueryObject = function	(pattern){
 		}
 		if(pattern.charAt(i)===_endARR){
 			_lexers.slice(-1)[0].end = i;
-			console.log(' is ARRAY', i);
 			return true;
 		}
 		return false;
