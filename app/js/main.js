@@ -52,7 +52,8 @@
     ]
   }];
 
-  //var isValid = validQueryObject('_demosObject[0].children[0].ids' )(_demosObject);
+var isValid = validQueryObject('_demosObject[0].children[0].ids' )(_demosObject);
+console.log('Without CALLBACK', isValid);
   //console.log(isValid, '_demosObject[0].children[0].ids');
 validQueryObject('_demosObject[0].children[0].status' ,function(founded, obj){
     if(founded!==void(0)){
