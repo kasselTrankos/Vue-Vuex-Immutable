@@ -26,7 +26,7 @@ var t = new LazyChain($scope)
 ```
 
 
-Validación de Object by string en validQueryObject, retorna false si no existe, en caso de existir la posición pedida(*necesita una revisión de código*): 
+Validación de Object by string en validQueryObject, retorna false si no existe, en caso de existir la posición pedida: 
 ```javascript
   var _validQueryObject = validQueryObject('_demosObject[0].children[0].ids')(_demosObject);
   console.log(_validQueryObject, 9999);

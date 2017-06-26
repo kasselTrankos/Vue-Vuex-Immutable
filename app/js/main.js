@@ -4,11 +4,11 @@
 
   var _demosObject= [{
     title: 'sion',
-    id: 0,
+    id: 12112,
     children:[
       {
         title: 'amaris',
-        id: 1,
+        id: 99999,
         ids:[1,3,4,5,6]
       },
       {
@@ -52,8 +52,8 @@
     ]
   }];
 
-  var _validQueryObject = validQueryObject('_demosObject[0].children[0].ids')(_demosObject);
-  console.log(_validQueryObject, 9999);
+  var _validQueryObject = validQueryObject('_demosObject[0].children[0].ids[1111]')(_demosObject);
+  console.log(_validQueryObject, '_demosObject[0].children[0].ids');
   /////////////////from book,
   /////dynamic scope
   var stackBinder = list.stack(function(stack, v){
