@@ -8,7 +8,8 @@
     children:[
       {
         title: 'amaris',
-        id: 1
+        id: 1,
+        ids:[1,3,4,5,6]
       },
       {
         title: 'good',
@@ -51,6 +52,8 @@
     ]
   }];
 
+  var _validQueryObject = validQueryObject('_demosObject[0].children[0].ids')(_demosObject);
+  console.log(_validQueryObject, 9999);
   /////////////////from book,
   /////dynamic scope
   var stackBinder = list.stack(function(stack, v){
@@ -101,12 +104,12 @@
     }
   )(_demosObject);
 
-  
+
 */
 function compare(stack){
   console.log(stack, 444, 00)
   if(typeof(stack)=='undefined') return false;
-  
+
   return stack.children || stack;
 }
   function pattern(str){
@@ -140,13 +143,13 @@ function compared(stack){
 /////parece mas light, y sencilla bastante
 ///// modelo abstracto de objeto
   function deepAbstractSearch(stack, compare, next){
-    var founded =[]; 
+    var founded =[];
     function find(stack){
       for(k in stack){
         if(compare(stack[k])){
           founded.push(stack[k]);
         }
-        if(next(stack[k])){    
+        if(next(stack[k])){
           trampoline(find.bind(null, stack[k]));
         }
       }
@@ -170,7 +173,7 @@ var app = new Vue({
     },
     created: function () {
       this.fetchData();
-      
+
     },
     methods: {
       fetchData: function () {
@@ -179,7 +182,7 @@ var app = new Vue({
             self.items = data;
             var t = deepAbstractSearch(data, function(o){
               return (o.id=='1044401');
-            }, 
+            },
             function(o){
               return (Object.prototype.toString.call(o) === '[object Array]' || Object.prototype.toString.call(o) === '[object Object]');
             });
