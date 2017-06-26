@@ -52,8 +52,15 @@
     ]
   }];
 
-  var isValid = validQueryObject('_demosObject[0].children[0].ids[1111]')(_demosObject);
-  console.log(isValid, '_demosObject[0].children[0].ids');
+  //var isValid = validQueryObject('_demosObject[0].children[0].ids' )(_demosObject);
+  //console.log(isValid, '_demosObject[0].children[0].ids');
+validQueryObject('_demosObject[0].children[0].status' ,function(founded, obj){
+    if(founded!==void(0)){
+      console.log(founded, 'callback done and FOUNDED');
+    }else{
+      console.log(founded, 'callback done and NOT FOUNDED');
+    }
+  })(_demosObject);
   /////////////////from book,
   /////dynamic scope
   var stackBinder = list.stack(function(stack, v){

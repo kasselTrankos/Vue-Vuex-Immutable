@@ -1,4 +1,4 @@
-var validQueryObject = function	(pattern){
+var validQueryObject = function	(pattern, callback){
 	var _object = {}, _lexers = [];
 	var _startARR = '[', _endARR = ']', _startObj = '.';
 	function Lexer(){
@@ -25,7 +25,7 @@ var validQueryObject = function	(pattern){
 		if(
 			_lexers.length>0 &&
 			pattern.charAt(_lexers.slice(-1)[0].start-1)===_startObj &&
-			(pattern.charAt(i)===_startARR || i ===pattern.length)){
+			(pattern.charAt(i)===_startARR || i === pattern.length)){
 			_lexers.slice(-1)[0].end = i;
 			return true;
 		}
@@ -45,8 +45,12 @@ var validQueryObject = function	(pattern){
 		return false;
 
 	}
-	function validate(){
-		return valid() || false;
+	function validate(obj){
+		var isValid = valid();
+		if(callback){
+			callback(isValid, obj)
+		}
+		return isValid
 	};
 	return function (obj){
 		_object = obj;
