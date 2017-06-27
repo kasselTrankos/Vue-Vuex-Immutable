@@ -26,11 +26,8 @@
 	    	<p class="text-primary col-md-6 col-md-offset-6">{{vAkira}}</p>
 	    </div>
 	</div>
-
 </template>
-
 <script>
-
 export default {
   data () {
     return {
