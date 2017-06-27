@@ -1,3 +1,3 @@
 node_modules
 app/js/immutable/bundle.js
-app/vue/index.js
+app/vue.js
