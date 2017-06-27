@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import actState from './actState.jsx';
+
+
 Vue.component('myComponent', {
     render (h) {
 	    return (<div class="row">
