@@ -10,8 +10,8 @@ Vue.component('myComponent', {
 		    	<div class="row">
 		    		<form class="col-md-4 col-md-offset-4" on-submit={(e) => this.onsubmit(e)}>
 		    			<div class="form-group">
-						    <label for="exampleInputEmail1">{ this.iLabel }:</label>
-						    <input type="text" class="form-control" on-input={(e) => this.sync('vAkira', e.target.value)}  id="exampleInputEmail1" placeholder={ this.vAkira } />
+						    <label for="myelm">{ this.iLabel }:</label>
+						    <input type="text" class="form-control" on-input={(e) => this.sync('vAkira', e.target.value)}  id="myelm" placeholder={ this.vAkira } />
 					  	</div>
 		    		</form>
 		    	</div>
@@ -26,6 +26,11 @@ Vue.component('myComponent', {
 	    },
 	    onsubmit(e){
 	    	e.preventDefault();
+
+	    	this.elms.push(this.vAkira);
+	    	this.vAkira = '';
+	    	document.getElementById('myelm').value = this.vAkira;
+
 	    	return false;
 	    }
 	},

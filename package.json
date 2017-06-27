@@ -16,6 +16,7 @@
     "http-server": "^0.8.5",
     "immutable": "^3.8.1",
     "jade": "^1.11.0",
+    "redux": "^3.7.1",
     "stylus": "^0.54.5",
     "vinyl-source-stream": "^1.1.0",
     "vueify": "^9.4.1"
