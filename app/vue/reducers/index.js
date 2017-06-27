@@ -1,10 +1,5 @@
-const manageState = (state = 'GET_STATES', action) => {
-  switch (action.type) {
-    case 'ADD_STATE':
-      return action.filter
-    default:
-      return state
-  }
-}
+import {combineReducers} from 'redux-immutable';
+import todos from './todos.js'
 
-export default manageState
+const stateApp = combineReducers({todos});
+export default stateApp;

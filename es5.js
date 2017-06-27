@@ -17,7 +17,7 @@ for(var i=0; i<_convert.length; i++){
 	  plugin: [watchify]
 	})
 	.transform(vueify)
-  	.transform(babelify, {presets: ["es2015"], plugins: ["transform-vue-jsx"]});
+  	.transform(babelify, {presets: ["es2015"], plugins: ["transform-vue-jsx", "transform-object-rest-spread"]});
 
 b.on('update', bundle)
   .bundle()
