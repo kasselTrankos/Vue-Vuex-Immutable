@@ -8,7 +8,6 @@ var _convert = [
 	{in: 'app/immutable/index.js' , out: 'app/js/immutable/bundle.js'},
 	{in: 'app/vue/index.js' , out: 'app/js/vue.js'},
 ];
-console.log(_convert.length);
 for(var i=0; i<_convert.length; i++){
 	var b = browserify({
 	  entries: [`${_convert[i].in}`],
