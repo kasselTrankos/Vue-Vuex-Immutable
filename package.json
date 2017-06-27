@@ -10,9 +10,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "coffee-script": "^1.12.6",
     "http-server": "^0.8.5",
     "immutable": "^3.8.1",
-    "vinyl-source-stream": "^1.1.0"
+    "jade": "^1.11.0",
+    "stylus": "^0.54.5",
+    "vinyl-source-stream": "^1.1.0",
+    "vueify": "^9.4.1"
   },
   "repository": {
     "type": "git",

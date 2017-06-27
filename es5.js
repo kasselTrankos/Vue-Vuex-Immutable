@@ -1,4 +1,5 @@
 var fs = require("fs"),
+	vueify = require('vueify'),
 	babelify = require('babelify'),
 	watchify = require('watchify'),
 	browserify = require("browserify");
@@ -16,7 +17,8 @@ for(var i=0; i<_convert.length; i++){
 	  packageCache: {},
 	  plugin: [watchify]
 	})
-  .transform(babelify, {presets: ["es2015"]});
+	.transform(vueify)
+  	.transform(babelify, {presets: ["es2015"]});
 
 b.on('update', bundle)
   .bundle()
