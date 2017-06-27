@@ -4,11 +4,12 @@
 
   var _demosObject= [{
     title: 'sion',
-    id: 0,
+    id: 12112,
     children:[
       {
         title: 'amaris',
-        id: 1
+        id: 99999,
+        ids:[1,3,4,5,6]
       },
       {
         title: 'good',
@@ -51,6 +52,16 @@
     ]
   }];
 
+var isValid = validQueryObject('_demosObject[0].children[0].ids' )(_demosObject);
+console.log('Without CALLBACK', isValid);
+  //console.log(isValid, '_demosObject[0].children[0].ids');
+validQueryObject('_demosObject[0].children[0].status' ,function(founded, obj){
+    if(founded!==void(0)){
+      console.log(founded, 'callback done and FOUNDED');
+    }else{
+      console.log(founded, 'callback done and NOT FOUNDED');
+    }
+  })(_demosObject);
   /////////////////from book,
   /////dynamic scope
   var stackBinder = list.stack(function(stack, v){
@@ -101,12 +112,12 @@
     }
   )(_demosObject);
 
-  
+
 */
 function compare(stack){
   console.log(stack, 444, 00)
   if(typeof(stack)=='undefined') return false;
-  
+
   return stack.children || stack;
 }
   function pattern(str){
@@ -140,13 +151,13 @@ function compared(stack){
 /////parece mas light, y sencilla bastante
 ///// modelo abstracto de objeto
   function deepAbstractSearch(stack, compare, next){
-    var founded =[]; 
+    var founded =[];
     function find(stack){
       for(k in stack){
         if(compare(stack[k])){
           founded.push(stack[k]);
         }
-        if(next(stack[k])){    
+        if(next(stack[k])){
           trampoline(find.bind(null, stack[k]));
         }
       }
@@ -161,35 +172,14 @@ function compared(stack){
 /*var ss = deepSearch(_demosObject, function(o){
   return (o.id===8);
 }, function(o){return (o.children);});*/
-var ss = 'nit';
-var app = new Vue({
-    el: '#app',
-    data: {
-      search:'',
-      message: 'Hello Vue!'+ss
-    },
-    created: function () {
-      this.fetchData();
-      
-    },
-    methods: {
-      fetchData: function () {
-        var self = this;
-        $.get( '/demo/complex.json', function( data ) {
-            self.items = data;
-            var t = deepAbstractSearch(data, function(o){
-              return (o.id=='1044401');
-            }, 
-            function(o){
-              return (Object.prototype.toString.call(o) === '[object Array]' || Object.prototype.toString.call(o) === '[object Object]');
-            });
-            console.log(t, 'poppp');
-        });
 
+<<<<<<< HEAD
       }
     }
 });
 
+=======
+>>>>>>> immutable
 //  console.log(ss, ' jjajajja deep search nested!!!!');
 $.get( '/demo/esprima.json', function( data ) {
   console.log(data);
