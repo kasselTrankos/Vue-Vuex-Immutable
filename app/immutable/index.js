@@ -1,6 +1,9 @@
 const { Map } = require('immutable')
-const map1 = Map({ a: 1, b: 2, c: 32 });
-
-console.log(map1.get('c'), 'MAP from immutable');
+const map = Map({
+	name: 'juan',
+	appel: 'kiosko'
+});
+map.set('name', 'Antonio pascual');
+console.log(map.get('name'), 'MAP from immutable');
 
 
