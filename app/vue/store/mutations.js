@@ -16,6 +16,9 @@ export const mutations = {
       done: false
     })
   },
+  addState(state, {text}){
+   console.log(text, ' aki le pongo immutable?¿?¿?');
+  },
 
   deleteTodo (state, { todo }) {
     state.todos.splice(state.todos.indexOf(todo), 1)

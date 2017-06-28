@@ -9,4 +9,4 @@ new Vue({
   	render: function (createElement) {
     	return createElement(Home)
   	}
-})
+});

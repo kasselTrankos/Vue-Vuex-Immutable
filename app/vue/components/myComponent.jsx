@@ -5,7 +5,7 @@ import { mapMutations } from 'vuex'
 
 Vue.component('myComponent', {
 	created() {
-		
+
 	},
     render (h) {
 	    return (<div class="row">
@@ -26,9 +26,7 @@ Vue.component('myComponent', {
   	methods: {
 
   		... mapMutations([
-	      'editTodo',
-	      'toggleTodo',
-	      'deleteTodo'
+	      'addState'
 	    ]),
 	    check() {
 	     	this.checked = !this.checked;
@@ -40,7 +38,7 @@ Vue.component('myComponent', {
 
 	    onsubmit(e){
 	    	e.preventDefault();
-
+	    	this.addState({text:this.vAkira});
 	    	this.elms.push(this.vAkira);
 	    	this.vAkira = '';
 	    	document.getElementById('myelm').value = this.vAkira;
