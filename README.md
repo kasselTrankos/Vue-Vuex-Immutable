@@ -15,7 +15,11 @@ Pendiente de implementar.
 
 `node static_server.js`
 
-desde http://127.0.0.1:9000
+desde http://127.0.0.1:9001
+
+
+He añadido la librería de  Vuex para uso del concepto Redux en Vuejs, y agrego el mantenimiento del Satate con immutable.
+
 
 ```javascript
 var t = new LazyChain($scope)
