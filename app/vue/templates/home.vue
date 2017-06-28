@@ -15,7 +15,7 @@
 export default {
   data () {
     return {
-      msg: 'Hello world!'
+      msg: 'Mantenimento de estados'
     }
   }
 }

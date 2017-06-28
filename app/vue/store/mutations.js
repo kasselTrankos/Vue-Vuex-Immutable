@@ -1,44 +1,13 @@
-export const STORAGE_KEY = 'todos-vuejs'
-
-// for testing
-if (navigator.userAgent.indexOf('PhantomJS') > -1) {
-  window.localStorage.clear()
-}
-
+import { Map, List }  from 'immutable';
 export const state = {
-  todos: JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')
-}
-
+	current: -1,
+	states: []
+};
 export const mutations = {
-  addTodo (state, { text }) {
-    state.todos.push({
-      text,
-      done: false
-    })
+  addState (state, texts) {
+   return state.states.push(Map({text: List(texts)}));
   },
-  addState(state, {text}){
-   console.log(text, ' aki le pongo immutable?¿?¿?');
-  },
-
-  deleteTodo (state, { todo }) {
-    state.todos.splice(state.todos.indexOf(todo), 1)
-  },
-
-  toggleTodo (state, { todo }) {
-    todo.done = !todo.done
-  },
-
-  editTodo (state, { todo, value }) {
-    todo.text = value
-  },
-
-  toggleAll (state, { done }) {
-    state.todos.forEach((todo) => {
-      todo.done = done
-    })
-  },
-
-  clearCompleted (state) {
-    state.todos = state.todos.filter(todo => !todo.done)
+  setState(state, current){
+  	state.current = current;
   }
 }
