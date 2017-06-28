@@ -1,7 +1,3 @@
 node_modules
-<<<<<<< HEAD
-app/immutable
-=======
 app/js/immutable/bundle.js
-app/vue.js
->>>>>>> immutable
+app/js/vue.js
